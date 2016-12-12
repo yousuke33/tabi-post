@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   resources :guests
   resources :owners
+  resources :plans, only: [:new, :create, :show]
 end

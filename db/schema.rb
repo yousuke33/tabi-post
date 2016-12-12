@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212102434) do
+ActiveRecord::Schema.define(version: 20161212123400) do
 
   create_table "guests", force: :cascade do |t|
     t.integer  "user_id"
@@ -28,6 +28,60 @@ ActiveRecord::Schema.define(version: 20161212102434) do
   end
 
   add_index "owners", ["user_id"], name: "index_owners_on_user_id"
+
+  create_table "plan_budgets", force: :cascade do |t|
+    t.integer  "plan_id"
+    t.integer  "budget"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "plan_budgets", ["plan_id"], name: "index_plan_budgets_on_plan_id"
+
+  create_table "plan_dates", force: :cascade do |t|
+    t.integer  "plan_id"
+    t.integer  "start_dates"
+    t.integer  "finish_dates"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "plan_dates", ["plan_id"], name: "index_plan_dates_on_plan_id"
+
+  create_table "plan_details", force: :cascade do |t|
+    t.integer  "plan_id"
+    t.string   "detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "plan_details", ["plan_id"], name: "index_plan_details_on_plan_id"
+
+  create_table "plan_num_of_people", force: :cascade do |t|
+    t.integer  "plan_id"
+    t.integer  "num_of_people"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "plan_num_of_people", ["plan_id"], name: "index_plan_num_of_people_on_plan_id"
+
+  create_table "plan_places", force: :cascade do |t|
+    t.integer  "plan_id"
+    t.integer  "coordinate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "plan_places", ["plan_id"], name: "index_plan_places_on_plan_id"
+
+  create_table "plans", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "plans", ["user_id"], name: "index_plans_on_user_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
