@@ -28,6 +28,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'rb-readline'
+gem 'role_model'
+gem 'cancancan'
+gem 'rolify'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

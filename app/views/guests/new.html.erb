@@ -1,7 +1,4 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for(@user, url: guests_path) do |f| %>
 
   <div class="field">
     <%= f.label :name %><br />
@@ -25,10 +22,12 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワード"  %>
   </div>
+  
+  <%= f.fields_for :guest do |f2| %>
+    <%= f2.text_field :created_at %>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
