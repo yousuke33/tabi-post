@@ -1,16 +1,39 @@
-new plan
+<h1>プランを登録</h1>
 
 <%= form_for @plan do |f| %>
-	<div class="field">
-		<%= label :plan_date %>
-		<%= f.text_field :plan_date, autofocus: true, placeholder: "date"  %>
-	</div>
-	<div class="field">
-		<%= label :plan_date %>
-		<%= f.text_field :plan_date, autofocus: true, placeholder: "date"  %>
-	</div>
-	<div class="field">
-		<%= label :plan_date %>
-		<%= f.text_field :plan_date, autofocus: true, placeholder: "date"  %>
-	</div>
+	<%= f.fields_for @plan.plan_date.new do |p| %>
+		<div>
+			<%= p.label :開始予定日 %>
+			<%= p.number_field(:start_dates) %>
+		
+			<%= p.label :最終予定日 %>
+			<%= p.number_field(:finish_dates) %>
+		</div>	
+	<% end %>
+
+	<%= f.fields_for @plan.plan_place.new do |p| %>
+		<div>
+			<%= p.label :場所を選択 %>
+			<%= p.number_field(:coordinate) %>
+		</div>
+	<% end %>
+
+	<%= f.fields_for @plan.plan_num_of_people.new do |p| %>
+		<div>
+			<%= p.label :人数 %>
+			<%= p.number_field(:num_of_people) %>
+		</div>
+	<% end %>
+
+	<%= f.fields_for @plan.plan_budget.new do |p| %>
+		<div>
+			<%= p.label :予算 %>
+			<%= p.number_field(:budget) %>
+		</div>
+	<% end %>
+
+
+
+
+	<%= f.submit  "プランを投稿" , class:"btn btn-largh btn-primary" %>
 <% end %>
