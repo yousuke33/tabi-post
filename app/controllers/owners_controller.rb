@@ -6,7 +6,8 @@ class OwnersController < ApplicationController
 		@user.owner = Owner.new
 	end
 	def create
-		user_params = params.require(:user).permit(:name,:email,:password,:password_confirmation,:owner)
+		user_params = params.require(:user).permit(:name,:email,:password,:password_confirmation,:role)
+		user_params[:role] = "owner"
 		@user = User.create(user_params)
 		owner_params = params.require(:user).require(:owner).permit(:user_id,:create_at)
 		owner_params[:user_id] = @user.id
