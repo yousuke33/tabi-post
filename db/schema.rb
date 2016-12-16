@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212123400) do
+ActiveRecord::Schema.define(version: 20161216031921) do
 
   create_table "guests", force: :cascade do |t|
     t.integer  "user_id"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20161212123400) do
 
   create_table "plan_dates", force: :cascade do |t|
     t.integer  "plan_id"
-    t.integer  "start_dates"
-    t.integer  "finish_dates"
+    t.string   "start_dates"
+    t.string   "finish_dates"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -57,14 +57,14 @@ ActiveRecord::Schema.define(version: 20161212123400) do
 
   add_index "plan_details", ["plan_id"], name: "index_plan_details_on_plan_id"
 
-  create_table "plan_num_of_people", force: :cascade do |t|
+  create_table "plan_num_of_customers", force: :cascade do |t|
     t.integer  "plan_id"
-    t.integer  "num_of_people"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  add_index "plan_num_of_people", ["plan_id"], name: "index_plan_num_of_people_on_plan_id"
+  add_index "plan_num_of_customers", ["plan_id"], name: "index_plan_num_of_customers_on_plan_id"
 
   create_table "plan_places", force: :cascade do |t|
     t.integer  "plan_id"

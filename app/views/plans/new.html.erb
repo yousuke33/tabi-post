@@ -2,38 +2,45 @@
 
 <%= form_for @plan do |f| %>
 	<%= f.fields_for @plan.plan_date.new do |p| %>
-		<div>
-			<%= p.label :開始予定日 %>
-			<%= p.number_field(:start_dates) %>
-		
-			<%= p.label :最終予定日 %>
-			<%= p.number_field(:finish_dates) %>
+		<%= p.label :予定日 %>
+		<div class="form-inline">
+			<%= p.text_field :start_dates, class: 'form-control datepicker',placeholder: "出発日" %>
+			〜
+			<%= p.text_field :finish_dates, class: 'form-control datepicker',placeholder: "帰宅日"  %>
 		</div>	
 	<% end %>
 
 	<%= f.fields_for @plan.plan_place.new do |p| %>
-		<div>
-			<%= p.label :場所を選択 %>
-			<%= p.number_field(:coordinate) %>
+		<div class="form-group">
+			<%= p.label :行き先 %>
+			<%= p.number_field:coordinate, class: 'form-control' %>
 		</div>
 	<% end %>
 
-	<%= f.fields_for @plan.plan_num_of_people.new do |p| %>
-		<div>
+	<%= f.fields_for @plan.plan_num_of_customer.new do |p| %>
+		<div class="form-group">
 			<%= p.label :人数 %>
-			<%= p.number_field(:num_of_people) %>
+			<%= p.number_field:number, class: 'form-control' %>
 		</div>
 	<% end %>
 
 	<%= f.fields_for @plan.plan_budget.new do |p| %>
 		<div>
 			<%= p.label :予算 %>
-			<%= p.number_field(:budget) %>
+			<%= p.number_field:budget, class: 'form-control' %>
+		</div>
+	<% end %>
+
+	<%= f.fields_for @plan.plan_detail.new do |p| %>
+		<div>
+			<%= p.label :自由欄 %>
+			<%= p.text_field :detail, class:'form-control', rows:3, placeholder: "feaw" %>
 		</div>
 	<% end %>
 
 
 
 
-	<%= f.submit  "プランを投稿" , class:"btn btn-largh btn-primary" %>
+	<%= f.submit  "プランを投稿" , class:"btn btn-large btn-primary" %>
+
 <% end %>

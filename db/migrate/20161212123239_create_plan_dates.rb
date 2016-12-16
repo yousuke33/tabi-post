@@ -3,8 +3,8 @@ class CreatePlanDates < ActiveRecord::Migration
     create_table :plan_dates do |t|
     	t.references :plan, index: true, foreign_key: true
 
-    	t.integer :start_dates
-    	t.integer :finish_dates
+    	t.string :start_dates
+    	t.string :finish_dates
 
       t.timestamps null: false
     end

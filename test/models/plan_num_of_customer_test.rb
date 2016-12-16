@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PlanNumOfPersonTest < ActiveSupport::TestCase
+class PlanNumOfCustomerTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

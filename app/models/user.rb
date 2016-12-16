@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
 
   has_one :owner, dependent: :destroy
   has_one :guest, dependent: :destroy
+  has_many :plan, dependent: :destroy
 end
