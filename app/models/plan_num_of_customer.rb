@@ -1,3 +1,3 @@
 class PlanNumOfCustomer < ActiveRecord::Base
-	belongs_to :plan
+	include Plan::BelongsTo
 end

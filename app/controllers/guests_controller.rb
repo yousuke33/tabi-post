@@ -7,13 +7,10 @@ class GuestsController < ApplicationController
   end
   
   def create
-    user_params = params.require(:user).permit(:name, :email,:password,:password_confirmation)
-    user_params[:role] = "guest"
-    @user = User.create(user_params)
-    guest_params = params.require(:user).require(:guest).permit(:user_id)
-    guest_params[:user_id] = @user.id
-    @guest = Guest.create(guest_params)
-
+    User.transaction do
+      @user = User.create(user_params)
+      @guest = Guest.create(guest_params)
+    end
     if @user.save && @guest.save
       redirect_to @guest
     else
@@ -28,8 +25,14 @@ class GuestsController < ApplicationController
 
   private
 
-  def set_guest
-    # @user = User.find(params[:id])
+  def user_params
+    user_param = params.require(:user).permit(:name, :email,:password,:password_confirmation)
+    user_param[:role] = "guest"
+    user_param
   end
-
+  def guest_params
+    guest_param = params.require(:user).require(:guest).permit(:user_id)
+    guest_param[:user_id] = @user.id
+    return guest_param
+  end
 end
