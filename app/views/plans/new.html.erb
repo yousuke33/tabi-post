@@ -1,5 +1,12 @@
-<h1>プランを登録</h1>
+<div id="full-width-div" class="lightgreen-bg">
+<div class="container white-bg">
+<div class="container limit-width">
 
+
+<h1>プランを登録</h1>
+<div class="alert alert-success" role="alert">
+	お決まりの内容のみで結構ですので、入力お願いいたします。
+</div>
 <%= form_for @plan do |f| %>
 	<%= f.fields_for @plan.plan_date.new do |p| %>
 		<%= p.label :予定日 %>
@@ -34,7 +41,9 @@
 	<%= f.fields_for @plan.plan_detail.new do |p| %>
 		<div>
 			<%= p.label :自由欄 %>
-			<%= p.text_field :detail, class:'form-control', rows:3, placeholder: "feaw" %>
+			<%= p.text_area :detail, class:'form-control', rows:'3', 
+			placeholder: "ご要望、ご希望はこちら
+			例）千葉で、家族で海釣りがしたい。" %>
 		</div>
 	<% end %>
 
@@ -44,3 +53,6 @@
 	<%= f.submit  "プランを投稿" , class:"btn btn-large btn-primary" %>
 
 <% end %>
+</div>
+</div>
+</div>
