@@ -8,7 +8,7 @@
 	お決まりの内容のみで結構ですので、入力お願いいたします。
 </div>
 <%= form_for @plan do |f| %>
-	<%= f.fields_for @plan.plan_date.new do |p| %>
+	<%= f.fields_for :plan_date, @plan.plan_date do |p| %>
 		<%= p.label :予定日 %>
 		<div class="form-inline">
 			<%= p.text_field :start_dates, class: 'form-control datepicker',placeholder: "出発日" %>
@@ -17,28 +17,28 @@
 		</div>	
 	<% end %>
 
-	<%= f.fields_for @plan.plan_place.new do |p| %>
+	<%= f.fields_for :plan_place, @plan.plan_place do |p| %>
 		<div class="form-group">
 			<%= p.label :行き先 %>
 			<%= p.number_field:coordinate, class: 'form-control' %>
 		</div>
 	<% end %>
 
-	<%= f.fields_for @plan.plan_num_of_customer.new do |p| %>
+	<%= f.fields_for :plan_num_of_customer, @plan.plan_num_of_customer do |p| %>
 		<div class="form-group">
 			<%= p.label :人数 %>
 			<%= p.number_field:number, class: 'form-control' %>
 		</div>
 	<% end %>
 
-	<%= f.fields_for @plan.plan_budget.new do |p| %>
+	<%= f.fields_for :plan_budget, @plan.plan_budget do |p| %>
 		<div>
 			<%= p.label :予算 %>
 			<%= p.number_field:budget, class: 'form-control' %>
 		</div>
 	<% end %>
 
-	<%= f.fields_for @plan.plan_detail.new do |p| %>
+	<%= f.fields_for :plan_detail, @plan.plan_detail do |p| %>
 		<div>
 			<%= p.label :自由欄 %>
 			<%= p.text_area :detail, class:'form-control', rows:'3', 
