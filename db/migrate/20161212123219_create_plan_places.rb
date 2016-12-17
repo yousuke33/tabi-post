@@ -3,7 +3,7 @@ class CreatePlanPlaces < ActiveRecord::Migration
     create_table :plan_places do |t|
     	t.references :plan, index: true, foreign_key: true
 
-    	t.integer :coordinate
+    	t.string :place
     	
       t.timestamps null: false
     end
