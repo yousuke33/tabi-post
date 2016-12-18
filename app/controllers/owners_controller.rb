@@ -2,18 +2,14 @@ class OwnersController < ApplicationController
 	
 	def new
 		@user = User.new
-		@user.role = "owner"
 		@user.owner = Owner.new
 	end
 	def create
-		user_params = params.require(:user).permit(:name,:email,:password,:password_confirmation,:role)
-		user_params[:role] = "owner"
-		@user = User.create(user_params)
-		owner_params = params.require(:user).require(:owner).permit(:user_id,:create_at)
-		owner_params[:user_id] = @user.id
+	  User.transaction do
+	  	@user = User.create(user_params)
 		@owner = Owner.create(owner_params)
-
-		if @user.save && @owner.save
+	  end
+		if @user && @owner
 	    	redirect_to @owner
 	    else
 	    	render 'new' 
@@ -21,8 +17,20 @@ class OwnersController < ApplicationController
 	end
 
 	def show
-	    @owner = Owner.find_by(params[:id])
+	    @owner = Owner.find(params[:id])
 	    @user = User.find_by(id: @owner.user_id)
 	end
 
+	private
+
+	def user_params
+	  user_params = params.require(:user).permit(:name,:email,:password,:password_confirmation)
+	  user_params[:role] = "owner"
+	  return user_params
+	end
+	def  owner_params
+	   owner_params = params.require(:user).permit(:user_id, :create_at)
+	   owner_params[:user_id] = @user.id
+	  return owner_params
+	end
 end

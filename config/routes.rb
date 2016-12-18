@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   resources :guests
   resources :owners
-  resources :plans, only: [:new, :create, :show]
+  resources :plans, only: [:index, :new, :create, :show]
+
 end

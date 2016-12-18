@@ -20,7 +20,8 @@
 	<%= f.fields_for :plan_place, @plan.plan_place do |p| %>
 		<div class="form-group">
 			<%= p.label :行き先 %>
-			<%= p.text_field:place, class: 'form-control' %>
+			<%= p.text_field:place, class: 'form-control',
+			placeholder: "例) 岩手県" %>
 		</div>
 	<% end %>
 

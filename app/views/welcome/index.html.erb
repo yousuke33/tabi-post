@@ -10,7 +10,7 @@
     <% if current_user.role == "guest" %>
       <a class="btn btn-lg btn-info" href="<%= new_plan_path %>">予定投稿</a>
     <% elsif current_user.role == "owner" %>
-      <a class="btn btn-lg btn-info" href="#">予定検索</a>
+      <a class="btn btn-lg btn-info" href="<%=plans_path%>">予定検索</a>
     <% end %>
   <% end %>
 </div>
