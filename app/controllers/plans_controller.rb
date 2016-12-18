@@ -30,7 +30,8 @@ class PlansController < ApplicationController
 
 		
 		# @plan = current_user.plan.new
-		if @plan.create(plan_params) # && @plan_date.save && @plan_place.save&& @plan_number.save&& @plan_budget.save && @plan_detail.save   
+		@plan = current_user.plan.build(plan_params)
+		if @plan.save # && @plan_date.save && @plan_place.save&& @plan_number.save&& @plan_budget.save && @plan_detail.save   
 			flash[:success] = "投稿が完了しました"
 			redirect_to root_path
 		else
