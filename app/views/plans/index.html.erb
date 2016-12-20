@@ -1,13 +1,25 @@
 <div id="full-width-div" class="lightgreen-bg">
 
 <h1>検索ページ</h1>
-
-<% form_tag(url_for(:action => 'index'), :remote => true, :id => "result_form") do %>
-  <%= text_field_tag :greeting %>
-  <%= submit_tag "Show!" %>
-<% end %>
-
+<div class="container">
+  <%= form_tag(url_for(:action => 'index'), :id => "result_form") do %>
+    <div>
+      start:<%= text_field_tag :start_dates,"",class:'datepicker' %>
+    </div>
+    <div>
+      finish_dates<%= text_field_tag :finish_dates,"",class:'datepicker' %>
+    </div>
+    
+    place<%= text_field_tag :place %>
+    <%= text_field_tag :detail %>
+    <%= submit_tag "Show!" %>
+  <% end %>
+<ul>
+  <li class="result"></li>
+</ul>
 <div id="result"></div>
+<div id="index"></div>
+</div>
 
 <div class="container">
   <div class="row">
@@ -48,3 +60,5 @@
  <a href="#" id='background'>Paint it red</a>
 
  </div>
+
+

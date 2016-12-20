@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #devise_for :users
 
   root 'welcome#index'
+  post "plans/index"
 
   resources :guests
   resources :owners
