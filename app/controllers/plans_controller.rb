@@ -1,14 +1,16 @@
 class PlansController < ApplicationController
   def index
+      params[:search] = {} if params[:search].blank?
       @users = User.all
-    if params[:start_dates]
-      plan_dates = PlanDate.search(['start_dates'], [params[:start_dates]])
-      plan_dates.each do |plan_date|
-        @plan = Plan.search(['id'],[plan_date.plan_id])
-      end
-    else
+    # if params[:start_dates]
+    #   plan_dates = PlanDate.search(['start_dates'], [params[:start_dates]])
+    #   plan_dates.each do |plan_date|
+    #     @plan = Plan.search(['id'],[plan_date.plan_id])
+    #   end
+    # else
       @plans = Plan.all
-    end
+      @plans = @plans.search(params[:search]) if parmas[:search].present?
+    # end
     
     
     # search
@@ -16,6 +18,7 @@ class PlansController < ApplicationController
   end
 
   def search
+    @plans = Plan.search(parmas[:search])
     @users = User.all
     @plans = Plan.all
     result = []

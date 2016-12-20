@@ -5,6 +5,7 @@
   <%= form_tag(url_for(:action => 'index'), :id => "result_form") do %>
     <div>
       start:<%= text_field_tag :start_dates,"",class:'datepicker' %>
+      start: <input type="text" name="search[:start_dates]" class="datepicker" value="<%= params[:search][:start_dates] %>"> 
     </div>
     <div>
       finish_dates<%= text_field_tag :finish_dates,"",class:'datepicker' %>

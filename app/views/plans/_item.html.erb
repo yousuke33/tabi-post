@@ -1,6 +1,6 @@
-<p>開始日：<%= plan.plan_date.start_dates %></p>
-<p>終了日：<%= plan.plan_date.finish_dates %></p>
-<p>場所：<%= plan.plan_place.place if plan.plan_place%></p>
+<p>開始日：<%= plan.plan_date.start_dates if plan.plan_date %></p>
+<p>終了日：<%= plan.plan_date.finish_dates if plan.plan_date %></p>
+<p>場所：</p>
 <p>予算：<%= plan.plan_budget.budget if plan.plan_budget%></p>
 <p>人数：<%= plan.plan_num_of_customer.number if plan.plan_num_of_customer%></p>
 <p>詳細：<%= plan.plan_detail.detail if plan.plan_detail%></p>
