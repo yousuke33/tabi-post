@@ -1,5 +1,4 @@
 class GuestsController < ApplicationController
-	before_action :set_guest, only: []
 
   def new
   	@user = User.new
@@ -8,11 +7,7 @@ class GuestsController < ApplicationController
   
   def create
     User.transaction do
-      user_params = params.require(:user).permit(:name, :email,:password,:password_confirmation)
-      user_params[:role] = "guest"
       @user = User.create(user_params)
-      guest_params = params.require(:user).require(:guest).permit(:user_id)
-      guest_params[:user_id] = @user.id
       @guest = Guest.create(guest_params)
     end
     if @user.save && @guest.save
@@ -25,12 +20,19 @@ class GuestsController < ApplicationController
   def show
     @guest = Guest.find_by(params[:id])
     @user = User.find_by(id: @guest.user_id)
+    @plan = Plan.where(user_id: @guest.user_id)
   end 
 
   private
 
-  def set_guest
-    # @user = User.find(params[:id])
+  def user_params
+    user_params = params.require(:user).permit(:name, :email,:password,:password_confirmation)
+    user_params[:role] = "guest"
+    return user_params
   end
-
+  def guest_params
+    guest_params = params.require(:user).permit(:user_id, :create_at)
+    guest_params[:user_id] = @user.id
+    return guest_params
+  end
 end

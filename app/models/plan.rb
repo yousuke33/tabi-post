@@ -1,5 +1,5 @@
 class Plan < ActiveRecord::Base
-	after_initialize :prepare_plan
+	# after_initialize :prepare_plan
 	has_one :plan_date, 		  	dependent: :destroy
 	has_one :plan_place, 		  	dependent: :destroy
 	has_one :plan_budget, 		  	dependent: :destroy
@@ -12,14 +12,14 @@ class Plan < ActiveRecord::Base
 	accepts_nested_attributes_for :plan_num_of_customer
 	accepts_nested_attributes_for :plan_detail
 	
-	private
-	def prepare_plan
-		if new_record?
-			self.plan_date =            PlanDate.new 
-			self.plan_place =           PlanPlace.new 
-			self.plan_budget =          PlanBudget.new 
-			self.plan_num_of_customer = PlanNumOfCustomer.new 
-			self.plan_detail =          PlanDetail.new 
-		end
-	end
+	# private
+	# def prepare_plan
+	# 	if new_record?
+	# 		self.plan_date =            PlanDate.new 
+	# 		self.plan_place =           PlanPlace.new 
+	# 		self.plan_budget =          PlanBudget.new 
+	# 		self.plan_num_of_customer = PlanNumOfCustomer.new 
+	# 		self.plan_detail =          PlanDetail.new 
+	# 	end
+	# end
 end
