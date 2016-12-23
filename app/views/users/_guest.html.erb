@@ -1,0 +1,7 @@
+<div class="row">
+	<% user.plan.each do |p| %>
+		<div class="col-md-4">
+			<%= render partial: "plans/item", locals:{plan: p} %>
+		</div>
+	<% end %>
+</div>

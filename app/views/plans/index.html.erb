@@ -24,22 +24,20 @@
         <%= submit_tag "検索する" %>
       <% end %>
     </div>
-    <% if @plans %>
-      <% @plans.each do |plan| %>
-        <div class="col-md-9 border-around">
-          <div class="row">
-            <div class="col-md-4">
+    <div class="col-md-9">
+      <div class="row">
+        <% if @plans %>
+          <% @plans.each do |plan| %>
+            <div class="col-md-4 border-around">
               <%= render partial: "item", locals:{plan: plan} %>
+              <%= link_to 'ユーザ詳細', controller:"users", action:"show", id: plan.user_id%>
             </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-
- <a href="#" id='background'>Paint it red</a>
-
- </div>
+</div>
 
 

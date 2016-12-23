@@ -1,1 +1,12 @@
-show
+<div class="container">
+	<h1><%= @user.name %> 様のページ</h1>
+	<h2><%= @user.email %></h2>
+	<h4>プラン一覧</h4>
+		<% if @user.role == "guest" %>
+			<%= render partial: "guest", locals:{user: @user} %>
+		<% end %>
+	</div>
+</div>
+
+
+

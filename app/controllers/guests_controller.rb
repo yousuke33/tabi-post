@@ -12,7 +12,7 @@ class GuestsController < ApplicationController
     end
     if @user.save && @guest.save
       sign_in @user
-      redirect_to @guest
+      redirect_to @user
     else
       render 'new' 
     end
