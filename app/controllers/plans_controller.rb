@@ -1,19 +1,44 @@
 class PlansController < ApplicationController
   def index
-      params[:search] = {} if params[:search].blank?
-      @plans = Plan.search(params["search"]) if params["search"].present?
+    if user_signed_in?
+      if current_user.role == "owner"
+        params[:search] = {} if params[:search].blank?
+        @plans = Plan.search(params["search"]) if params["search"].present?
+        if @plans
+          flash[:success] = "#{@plans.length}件のプランが見つかりました"
+        end
+
+      else
+        flash[:alert] = "オーナーとしてログインしてください"
+        redirect_to root_path
+      end
+    else
+      flash[:alert] = "ログインしてください"
+      redirect_to root_path
+    end 
   end
 
   def new
-    @plan =                      Plan.new
-    @plan.plan_date =            PlanDate.new 
-    @plan.plan_place =           PlanPlace.new 
-    @plan.plan_budget =          PlanBudget.new 
-    @plan.plan_num_of_customer = PlanNumOfCustomer.new 
-    @plan.plan_detail =          PlanDetail.new 
+    if user_signed_in?
+      if current_user.role == "guest"
+        @plan =                      Plan.new
+        @plan.plan_date =            PlanDate.new 
+        @plan.plan_place =           PlanPlace.new 
+        @plan.plan_budget =          PlanBudget.new 
+        @plan.plan_num_of_customer = PlanNumOfCustomer.new 
+        @plan.plan_detail =          PlanDetail.new 
+      else
+        flash[:alert] = "ゲストとしてログインしてください"
+        redirect_to root_path
+      end
+    else
+      flash[:alert] = "ログインしてください"
+      redirect_to root_path
+    end
   end
 
   def create
+
     if current_user.plan.create(plan_params) 
       flash[:success] = "投稿が完了しました"
       redirect_to root_path

@@ -4,26 +4,34 @@
   
 <div class="container">
  <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
       <%= form_tag(url_for(:action => 'index'), :id => "result_form") do %>
         <div>
-          start: <input type="text" name="search[:start_dates]" class="datepicker" value="<%= params[:search][:start_dates] %>"> 
+          start: <input type="text" name="search[:start_dates]" class="datepicker form-control" value="<%= params[:search][:start_dates] %>"> 
         </div>
         <div>
-          予算: <input type="integer" name="search[:budget]"  value="<%= params[:search][:budget] %>"> 
+          finish: <input type="text" name="search[:finish_dates]" class="datepicker form-control" value="<%= params[:search][:finish_dates] %>"> 
         </div>
-        <%= submit_tag "Show!" %>
+        <div>
+          目的地: <input type="text" name="search[:place]" class=" form-control" value="<%= params[:search][:place] %>"> 
+        </div>
+        <div>
+          予算: <input type="integer" name="search[:budget]" class=" form-control"  value="<%= params[:search][:budget] %>"> 
+        </div>
+        <div>
+          人数: <input type="integer" name="search[:number]" class=" form-control"  value="<%= params[:search][:number] %>"> 
+        </div>
+        <%= submit_tag "検索する" %>
       <% end %>
     </div>
-    <div class="col-md-6">
-      <%= @plans.length if @plans %>
-    </div>
-  </div>
-  <div class="row">
     <% if @plans %>
       <% @plans.each do |plan| %>
-        <div class="col-sm-4 border-around">
-          <%= render partial: "item", locals:{plan: plan} %>
+        <div class="col-md-9 border-around">
+          <div class="row">
+            <div class="col-md-4">
+              <%= render partial: "item", locals:{plan: plan} %>
+            </div>
+          </div>
         </div>
       <% end %>
     <% end %>
