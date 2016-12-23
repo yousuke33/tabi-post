@@ -29,7 +29,17 @@ class Plan < ActiveRecord::Base
 
 
 	
-	# private
+	private
+
+	def timezone(plan_params)
+		start_dates_arr = plan_params[:start_dates].split("/")
+		finish_dates_arr = plan_params[:finish_dates].split("/")
+		start_dates = [ start_dates_arr[2] + - + start_dates_arr[0] + - + start_dates_arr[1] ]
+		finish_dates = [ finish_dates_arr[2] + - + finish_dates_arr[0] + - + finish_dates_arr[1] ]
+		plan_params[:start_dates] = Time.zone.parse(start_dates)
+		plan_params[:finish_dates] = Time.zone.parse(finish_dates)
+	end
+
 	# def prepare_plan
 	# 	if new_record?
 	# 		self.plan_date =            PlanDate.new 

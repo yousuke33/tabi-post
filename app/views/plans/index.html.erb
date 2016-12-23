@@ -1,60 +1,32 @@
-<div id="full-width-div" class="lightgreen-bg">
+<div id="full-width-div" class="">
 
 <h1>検索ページ</h1>
+  
 <div class="container">
-  <%= form_tag(url_for(:action => 'index'), :id => "result_form") do %>
-    <div>
-      start:<%= text_field_tag :start_dates,"",class:'datepicker' %>
-      start: <input type="text" name="search[:start_dates]" class="datepicker" value="<%= params[:search][:start_dates] %>"> 
+ <div class="row">
+    <div class="col-md-6">
+      <%= form_tag(url_for(:action => 'index'), :id => "result_form") do %>
+        <div>
+          start: <input type="text" name="search[:start_dates]" class="datepicker" value="<%= params[:search][:start_dates] %>"> 
+        </div>
+        <div>
+          予算: <input type="integer" name="search[:budget]"  value="<%= params[:search][:budget] %>"> 
+        </div>
+        <%= submit_tag "Show!" %>
+      <% end %>
     </div>
-    <div>
-      finish_dates<%= text_field_tag :finish_dates,"",class:'datepicker' %>
+    <div class="col-md-6">
+      <%= @plans.length if @plans %>
     </div>
-    
-    place<%= text_field_tag :place %>
-    <%= text_field_tag :detail %>
-    <%= submit_tag "Show!" %>
-  <% end %>
-<ul>
-  <li class="result"></li>
-</ul>
-<div id="result"></div>
-<div id="index"></div>
-</div>
-
-<div class="container">
-  <div class="row">
-  	<div class="col-md-6">
-  		<h2>日時を選択</h2>
-  		<div class="form-group">
-		  <label for="usr">年:</label>
-		  <input type="text" class="form-control" id="usr">
-		</div>
-		<div class="form-group">
-		  <label for="pwd">月:</label>
-		  <input type="password" class="form-control" id="pwd">
-		</div>
-		<div class="form-group">
-		  <label for="pwd">日:</label>
-		  <input type="password" class="form-control" id="pwd">
-		</div>
-  		
-  	</div>
-  	<div class="col-md-6">
-  		<h2>目的地を選択</h2>
-  		<ul>
-  			<li>地方</li>
-  			<li>県</li>
-  			<li>市町村等</li>
-  		</ul>	
-  	</div>
   </div>
   <div class="row">
+    <% if @plans %>
       <% @plans.each do |plan| %>
         <div class="col-sm-4 border-around">
           <%= render partial: "item", locals:{plan: plan} %>
         </div>
       <% end %>
+    <% end %>
   </div>
 </div>
 

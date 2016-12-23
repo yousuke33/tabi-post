@@ -17,3 +17,9 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.jpostal 
+
+$(function() {
+	$(".datepicker").datepicker({
+		format : "YYYY-MM-DD",
+	});
+});
