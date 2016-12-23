@@ -20,6 +20,6 @@
 
 $(function() {
 	$(".datepicker").datepicker({
-		format : "YYYY-MM-DD",
+		dateFormat: "yy-mm-dd",
 	});
 });
