@@ -18,8 +18,3 @@
 //= require_tree .
 //= require jquery.jpostal 
 
-$(function() {
-	$(".datepicker").datepicker({
-		dateFormat: "yy-mm-dd",
-	});
-});

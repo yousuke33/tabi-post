@@ -11,7 +11,6 @@ class GuestsController < ApplicationController
       @guest = Guest.create(guest_params)
     end
     if @user.save && @guest.save
-      sign_in @user
       redirect_to @user
     else
       render 'new' 

@@ -10,7 +10,6 @@ class OwnersController < ApplicationController
     @owner = Owner.create(owner_params)
     end
     if @user && @owner
-        sign_in @user
         redirect_to @user
       else
         render 'new' 

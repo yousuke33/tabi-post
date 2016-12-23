@@ -5,7 +5,9 @@ module Plan::Search
     scope :with_start_or_finish_dates, lambda { |start_dates,finish_dates|
       table = PlanDate.arel_table
       if start_dates.present? && finish_dates.present?
-        condition = ( table[:start_dates].gteq(start_dates) && table[:finish_dates].lteq(finish_dates))
+        condition1 = table[:start_dates].gteq(start_dates)
+        condition2 = table[:finish_dates].lteq(finish_dates)
+        condition = condition1.and(condition2)
       elsif start_dates.present? && !finish_dates.present?
         condition = table[:start_dates].gteq(start_dates) 
       elsif !start_dates.present? && finish_dates.present?
