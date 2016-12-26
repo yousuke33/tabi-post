@@ -20,7 +20,10 @@ class PlansController < ApplicationController
 
   def new
     if user_signed_in?
+      puts '###############'
+      puts current_user.role == 'guest'
       if current_user.role == "guest"
+        puts 'feaf'
         @plan =                      Plan.new
         @plan.plan_date =            PlanDate.new 
         @plan.plan_place =           PlanPlace.new 
@@ -38,13 +41,12 @@ class PlansController < ApplicationController
   end
 
   def create
-
-    if current_user.plan.create(plan_params) 
+    # if current_user.plan.create(plan_params) 
       flash[:success] = "投稿が完了しました"
       redirect_to root_path
-    else
-      render 'plans/new'
-    end
+    # else
+    #   render 'plans/new'
+    # end
   end
 
   def show

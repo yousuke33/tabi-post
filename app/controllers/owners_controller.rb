@@ -4,10 +4,11 @@ class OwnersController < ApplicationController
     @user = User.new
     @user.owner = Owner.new
   end
+  
   def create
     User.transaction do
       @user = User.create(user_params)
-    @owner = Owner.create(owner_params)
+      @owner = Owner.create(owner_params)
     end
     if @user && @owner
         redirect_to @user
