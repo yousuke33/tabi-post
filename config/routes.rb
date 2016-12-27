@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   get  'plans', to: 'plans#index'
   post 'plans', to: 'plans#index'
 
-  resources :guests, except: [:create] do
-    # post '', to: 'guest/registrations#create', on: :collection, as: ''
-  end
+  resources :guests, except: [:create] 
   # post 'guests', to: 'guests/registrations#create'
   resources :owners
   resources :users, only: [:show]

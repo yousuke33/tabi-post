@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216031921) do
+ActiveRecord::Schema.define(version: 20161226235323) do
+
+  create_table "guests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "guests", ["user_id"], name: "index_guests_on_user_id"
 
   create_table "owners", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -95,7 +105,6 @@ ActiveRecord::Schema.define(version: 20161216031921) do
     t.datetime "locked_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
     t.string   "role"
   end
 

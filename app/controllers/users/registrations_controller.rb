@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_action :configure_sign_up_params, only: [:create]
+before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -10,11 +10,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    if (params[:role] == 'Owner') {
-      @user.owner = Owner.new
-    } else {
-      @user.guest = Guest.new
-    }
+    if @user.role == 'owner'
+      @user.owner = Owner.new(guest_owner_params)
+      @user.owner.name = params[:name]
+      @user.save
+    elsif @user.role == 'guest' 
+      @user.guest = Guest.new(guest_owner_params)
+      @user.guest.name = params[:name]
+      @user.save
+    else
+      # redirect_to root_path
+    end
+    
   end
 
   # GET /resource/edit
@@ -44,9 +51,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
+  end
+  def guest_owner_params
+    guest_owner_params = params.require(:user).permit(:created_at)
+    guest_owner_params[:name] = params[:name]
+    return guest_owner_params
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
