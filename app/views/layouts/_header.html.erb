@@ -8,8 +8,9 @@
           <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li> 
         <% else %>
-          <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %></li> 
-          <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link' %></li>
+          <li><%= link_to "ゲスト登録",new_user_registration_path( role:'guest'), class: 'bavbar-link' %></li>
+          <li><%= link_to "オーナー登録",new_user_registration_path( role:'owner'), class: 'bavbar-link' %></li> 
+          <li><%= link_to "ログイン", new_user_session_path, :class => 'navbar-link' %></li>
         <% end %>
       </ul> 
     </nav>

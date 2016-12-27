@@ -3,25 +3,32 @@ before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    if params[:role].present?
+      super
+    else
+      redirect_to root_path
+    end
+  end
 
   # POST /resource
   def create
-    super
-    if @user.role == 'owner'
-      @user.owner = Owner.new(guest_owner_params)
-      @user.owner.name = params[:name]
-      @user.save
-    elsif @user.role == 'guest' 
-      @user.guest = Guest.new(guest_owner_params)
-      @user.guest.name = params[:name]
-      @user.save
+    if params[:user][:role].present?
+      super
+      if @user.role == 'owner'
+        @user.owner = Owner.new(guest_owner_params)
+        @user.owner.name = params[:name]
+        @user.save
+      elsif @user.role == 'guest' 
+        @user.guest = Guest.new(guest_owner_params)
+        @user.guest.name = params[:name]
+        @user.save
+      else
+        # redirect_to root_path
+      end
     else
-      # redirect_to root_path
+      redirect_to root_path, alert: 'ログインできませんでした'
     end
-    
   end
 
   # GET /resource/edit

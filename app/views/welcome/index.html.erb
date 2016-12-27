@@ -3,10 +3,8 @@
     <h1>welcome to hotel app</h1>
   </div>
   <% if !user_signed_in? %>
-    <a class="btn btn-lg btn-primary" href="<%= new_guest_path %>">ゲスト登録</a>
-    <a class="btn btn-lg btn-info" href="<%= new_owner_path %>">オーナー登録</a>
-    <%= link_to("ゲスト登録",new_user_registration_path( role:'guest')) %>
-    <%= link_to("オーナー登録",new_user_registration_path( role:'owner')) %>
+    <%= link_to "ゲスト登録",new_user_registration_path( role:'guest'), class:"btn btn-lg btn-info" %>
+    <%= link_to "オーナー登録",new_user_registration_path( role:'owner'), class:"btn btn-lg btn-primary" %>
   <% end %>
   <% if user_signed_in? %>
     <% if current_user.role == "guest" %>
