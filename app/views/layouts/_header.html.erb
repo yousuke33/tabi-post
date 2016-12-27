@@ -4,7 +4,11 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to current_user.id, root_path %></li>
+          <% if current_user.role == 'guest' %>
+            <li><%= link_to current_user.guest.name, user_path(current_user) %></li>
+          <% elsif current_user.role == 'owner' %>
+            <li><%= link_to current_user.owner.name, user_path(current_user) %></li>
+          <% end %>
           <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li> 
         <% else %>

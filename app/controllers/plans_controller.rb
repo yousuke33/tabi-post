@@ -20,7 +20,6 @@ class PlansController < ApplicationController
   def new
     if user_signed_in?
       if current_user.role == "guest"
-        puts 'feaf'
         @plan =                      Plan.new
         @plan.plan_date =            PlanDate.new 
         @plan.plan_place =           PlanPlace.new 
@@ -48,7 +47,18 @@ class PlansController < ApplicationController
 
   def show
   end
-    
+  
+  def edit
+    @plan = Plan.find(params[:id])
+  end  
+
+  def update
+    @plan = Plan.find(params[:id])
+    @user = User.find(@plan.user_id)
+    if @plan.update(plan_params)
+      redirect_to user_path(@user)
+    end
+  end
   private
 
   def plan_params

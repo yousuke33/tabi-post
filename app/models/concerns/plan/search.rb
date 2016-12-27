@@ -41,7 +41,7 @@ module Plan::Search
 
     scope :search, lambda {|search_params|
       r = self 
-      r = r.with_plan_date.with_start_or_finish_dates(search_params[":start_dates"],search_params[":finish_dates"] if (search_params[":start_dates"].present? || search_params[":finish_dates"].present?))
+      r = r.with_plan_date.with_start_or_finish_dates(search_params[":start_dates"], search_params[":finish_dates"]) if search_params[":start_dates"].present? || search_params[":finish_dates"].present?
       r = r.with_plan_place.with_place(search_params[":place"]) if search_params[":place"].present?
       r = r.with_plan_budget.with_budget(search_params[":budget"]) if search_params[":budget"].present?
       r = r.with_plan_number.with_num_of_customer(search_params[":number"]) if search_params[":number"].present? 

@@ -8,7 +8,7 @@
 <div class="alert alert-success" role="alert">
 	お決まりの内容のみで結構ですので、入力お願いいたします。
 </div>
-<%= form_for @plan do |f| %>
+<%= form_for @plan, url: {action: 'create'} do |f| %>
 	<%= f.fields_for :plan_date, @plan.plan_date do |p| %>
 		<%= p.label :予定日 %>
 		<div class="form-inline">
@@ -48,10 +48,7 @@
 			例）千葉で、家族で海釣りがしたい。" %>
 		</div>
 	<% end %>
-
-
-
-
+	
 	<%= f.submit  "プランを投稿" , class:"btn btn-large btn-primary" %>
 
 <% end %>

@@ -2,6 +2,7 @@
 	<% user.plan.each do |p| %>
 		<div class="col-md-4">
 			<%= render partial: "plans/item", locals:{plan: p} %>
+			<%= link_to 'プランを編集', edit_plan_path(p) %>
 		</div>
 	<% end %>
 </div>

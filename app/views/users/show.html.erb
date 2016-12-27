@@ -1,12 +1,15 @@
 <div class="container">
-	<h1><%= @user.name %> 様のページ</h1>
-	<h2><%= @user.email %></h2>
-	<h4>プラン一覧</h4>
-		<% if @user.role == "guest" %>
-			<%= render partial: "guest", locals:{user: @user} %>
-		<% end %>
-	</div>
+  <h1><%= @user.guest.name if @user.role == 'guest'%> 
+    <%= @user.owner.name if @user.role == 'owner'%> 
+    様のページ
+  </h1>
+  <h2><%= @user.email %></h2>
+  <% if @user.role == "guest" %>
+    <h4>プラン一覧</h4>
+      <%= render partial: "guest", locals:{user: @user} %>
+  <% end %>
 </div>
+
 
 
 

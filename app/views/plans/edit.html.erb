@@ -1,0 +1,38 @@
+<h2>編集ページ</h2>
+
+<%= form_for @plan do |f| %>
+	<%= f.fields_for :plan_date do |p| %>
+		<%= p.label :予定日 %>
+		<div class="form-inline">
+			<%= p.text_field :start_dates, class: 'form-control datepicker', placeholder: '出発日' %>
+			〜
+			<%= p.text_field :finish_dates, class: 'form-control datepicker', placeholder: '帰宅日' %>
+		</div>
+	<% end %>
+
+	<%= f.fields_for :plan_place do |p| %>
+		<div class="form-group">
+			<%= p.label :目的地 %>
+			<%= p.text_field :place, class: 'form-control', placeholder: '' %>
+		</div>
+	<% end %>
+	<%= f.fields_for :plan_num_of_customer do |p| %>
+		<div class="form-group">
+			<%= p.label :人数 %>
+			<%= p.text_field :number, class: 'form-control', placeholder: '' %>
+		</div>
+	<% end %>
+	<%= f.fields_for :plan_budget do |p| %>
+		<div class="form-group">
+			<%= p.label :予算 %>
+			<%= p.text_field :budget, class: 'form-control', placeholder: '' %>
+		</div>
+	<% end %>
+	<%= f.fields_for :plan_detail do |p| %>
+		<div class="form-group">
+			<%= p.label :詳細 %>
+			<%= p.text_area :detail, class: 'form-control',rows:'3', placeholder: '' %>
+		</div>
+	<% end %>
+	<%= f.submit 'プランを編集', class:'btn btn-large btn-primary'%>
+<% end %>
