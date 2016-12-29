@@ -20,12 +20,7 @@ class PlansController < ApplicationController
   def new
     if user_signed_in?
       if current_user.role == "guest"
-        @plan =                      Plan.new
-        @plan.plan_date =            PlanDate.new 
-        @plan.plan_place =           PlanPlace.new 
-        @plan.plan_budget =          PlanBudget.new 
-        @plan.plan_num_of_customer = PlanNumOfCustomer.new 
-        @plan.plan_detail =          PlanDetail.new 
+         new_plan
       else
         flash[:alert] = "ゲストとしてログインしてください"
         redirect_to root_path
@@ -44,19 +39,24 @@ class PlansController < ApplicationController
       render 'plans/new'
     end
   end
-
-  def show
-  end
   
   def edit
     @plan = Plan.find(params[:id])
+    @user = User.find(@plan.user_id)
+    unless current_user == @user
+      flash[:danger] = "このプランの投稿者以外は編集できません。"
+      redirect_to @user
+    end
   end  
 
   def update
     @plan = Plan.find(params[:id])
     @user = User.find(@plan.user_id)
     if @plan.update(plan_params)
+      flash[:success] = "編集が完了しました。"
       redirect_to user_path(@user)
+    else
+      render 'edit'
     end
   end
   private
@@ -68,5 +68,14 @@ class PlansController < ApplicationController
       plan_num_of_customer_attributes: [:number],
       plan_budget_attributes: [:budget],
       plan_detail_attributes: [:detail])
+  end
+
+  def new_plan
+    @plan =                      Plan.new
+    @plan.plan_date =            PlanDate.new 
+    @plan.plan_place =           PlanPlace.new 
+    @plan.plan_budget =          PlanBudget.new 
+    @plan.plan_num_of_customer = PlanNumOfCustomer.new 
+    @plan.plan_detail =          PlanDetail.new
   end
 end

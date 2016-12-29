@@ -40,13 +40,13 @@ class Plan < ActiveRecord::Base
 	# 	plan_params[:finish_dates] = Time.zone.parse(finish_dates)
 	# end
 
-	# def prepare_plan
-	# 	if new_record?
-	# 		self.plan_date =            PlanDate.new 
-	# 		self.plan_place =           PlanPlace.new 
-	# 		self.plan_budget =          PlanBudget.new 
-	# 		self.plan_num_of_customer = PlanNumOfCustomer.new 
-	# 		self.plan_detail =          PlanDetail.new 
-	# 	end
-	# end
+	def self.prepare_plan
+		if self.new_record?
+			self.plan_date =            PlanDate.new 
+			self.plan_place =           PlanPlace.new 
+			self.plan_budget =          PlanBudget.new 
+			self.plan_num_of_customer = PlanNumOfCustomer.new 
+			self.plan_detail =          PlanDetail.new 
+		end
+	end
 end

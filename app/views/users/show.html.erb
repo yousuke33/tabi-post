@@ -5,7 +5,7 @@
   </h1>
   <h2><%= @user.email %></h2>
   <% if @user.role == "guest" %>
-    <h4>プラン一覧</h4>
+    <h3>プラン一覧</h3>
       <%= render partial: "guest", locals:{user: @user} %>
   <% end %>
 </div>
