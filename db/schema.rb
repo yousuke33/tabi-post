@@ -24,9 +24,13 @@ ActiveRecord::Schema.define(version: 20161226235323) do
 
   create_table "owners", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                                 null: false
+    t.string   "address_zipcode",         default: "", null: false
+    t.string   "address_prefecture_name", default: "", null: false
+    t.string   "address_city",            default: "", null: false
+    t.string   "address_street",          default: "", null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "owners", ["user_id"], name: "index_owners_on_user_id"

@@ -2,9 +2,12 @@
   <h1><%= @user.guest.name if @user.role == 'guest'%> 
     <%= @user.owner.name if @user.role == 'owner'%> 
     様のページ
+     
   </h1>
   <h2><%= @user.email %></h2>
-  <% if @user.role == "guest" %>
+  <% if current_user == @user && @user.role == 'owner' %>
+    <%= link_to "詳細情報登録", edit_owner_path %>
+  <% elsif @user.role == "guest" %>
     <h3>プラン一覧</h3>
       <%= render partial: "guest", locals:{user: @user} %>
   <% end %>

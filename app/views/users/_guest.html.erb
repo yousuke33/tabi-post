@@ -1,8 +1,14 @@
 <div class="row">
-	<% user.plan.each do |p| %>
-		<div class="col-md-4">
-			<%= render partial: "plans/item", locals:{plan: p} %>
-			<%= link_to 'プランを編集', edit_plan_path(p) %>
-		</div>
-	<% end %>
+  <% user.plan.each do |p| %>
+    <div class="col-md-4">
+      <%= render partial: "plans/item", locals:{plan: p} %>
+      <% if current_user == user %>
+        <% if current_user.role == 'guest' %>
+          <%= link_to 'プランを編集', edit_plan_path(p) %>
+        <% end %>
+      <% elsif current_user.role == 'owner' %>
+        <a href="mailto:<%=user.email%>?subject=お問い合わせ&amp;body=">このプランに返信する。</a>  
+      <% end %>
+    </div>
+  <% end %>
 </div>

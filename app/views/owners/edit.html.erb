@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+      <h2>情報登録</h2>
+      <%= form_for @owner do |f| %>
+        <div class="field">
+          <%= f.label :郵便番号 %>
+          <%= f.text_field :address_zipcode, id:'address_zipcode', class:'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :都道府県 %>
+           <%= f.text_field :address_prefecture_name, class:'form-control' %>
+       </div>
+       <div class="field">
+        <%= f.label :市区町村 %>
+          <%= f.text_field :address_city, id:'address_city', class:'form-control' %>
+        </div>
+      <div class="field">
+          <%= f.label :番地 %>
+          <%= f.text_field :address_street, id:'address_street', class:'form-control' %>
+      </div>
+      <div>
+          <%= f.submit "情報登録" %>
+      </div>
+      <% end %>  
+      </div>
+  </div>
+</div>

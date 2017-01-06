@@ -1,12 +1,14 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top">
   <div class="container">
-    <%= link_to "旅ポスト",root_path, id: "logo" %>
+    <%= link_to "たびポスト",root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <% if current_user.role == 'guest' %>
+            <li><a href="<%= new_plan_path %>" id='plan-bar'>予定投稿</a></li>
             <li><%= link_to current_user.guest.name, user_path(current_user) %></li>
           <% elsif current_user.role == 'owner' %>
+            <li><a href="<%=plans_path%>" id='plan-bar'>予定検索</a></li>
             <li><%= link_to current_user.owner.name, user_path(current_user) %></li>
           <% end %>
           <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>

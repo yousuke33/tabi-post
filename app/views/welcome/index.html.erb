@@ -1,18 +1,20 @@
-<div class=container>
-  <div class=jumbotron>
-    <h1>welcome to hotel app</h1>
+<div class='container'>
+  <div class='jumbotron'>
+    
+    <div class='row'>
+      <div class='col-md-5'>
+          <p class="top top-left">ゲストとしてプランを投稿</p>
+      </div>
+      <div class='col-md-2'>
+        
+      </div>
+      <div class='col-md-5'>
+        <p class="top top-right">オーナーとしてプランに返答</p>
+      </div>
+      
+    </div>
   </div>
-  <% if !user_signed_in? %>
-    <%= link_to "ゲスト登録",new_user_registration_path( role:'guest'), class:"btn btn-lg btn-info" %>
-    <%= link_to "オーナー登録",new_user_registration_path( role:'owner'), class:"btn btn-lg btn-primary" %>
-  <% end %>
-  <% if user_signed_in? %>
-    <% if current_user.role == "guest" %>
-      <a class="btn btn-lg btn-info" href="<%= new_plan_path %>">予定投稿</a>
-    <% elsif current_user.role == "owner" %>
-      <a class="btn btn-lg btn-info" href="<%=plans_path%>">予定検索</a>
-    <% end %>
-  <% end %>
+  <h2>たびポストは、ゲストとして旅のプランを投稿しホテルや旅館側からご自分にあったプランを提案してもらう、<br>またオーナーとして旅行を検討中のお客様を探し返答する相互サービスです。</h2>
 </div>
 
 

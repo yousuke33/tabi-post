@@ -5,6 +5,7 @@
 
 body {
   padding-top: 60px;
+  font-family: Kokoro;
 }
 
 section {
@@ -13,6 +14,18 @@ section {
 
 textarea {
   resize: vertical;
+}
+
+p.top{
+  font-size: 2em;
+  height: 500px;
+  padding: 250px 0;
+}
+
+a#plan-bar {
+  color: red;
+  font-size: 1.1em;
+  text-align: center;
 }
 
 .center {
@@ -52,11 +65,20 @@ p {
 
 /* header */
 
+header div.container{
+  border-bottom: solid 2px red;
+}
+
+#header {
+  font-family: "Kokoro";
+  color: #f00;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: #f00;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -64,31 +86,49 @@ p {
 }
 
 #logo:hover {
-  color: #fff;
   text-decoration: none;
 }
 
 /*body*/
 
-.lightgreen-bg{
-  background: #dff0d8;
+.btn {
+  color: red;
+  border: 1.5px solid red;
+  background: none;
 }
+
+.jumbotron{
+  font-size: 1em;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+}
+
+.lightpink-bg{
+  background: #FF9999;
+}
+
 .white-bg{
   background: #fff;
   width: 60%;
   margin-top:5%;
 }
 
-
 #full-width-div{
   position: absolute;
     width: 100%;
     left: 0;
 }
+
 .limit-width{
   width:70%
 }
 
 .border-around{
   border: solid 5px #ccc;
+}
+
+.btn.btn-lg {
+  margin-top: 10px;
+
 }
