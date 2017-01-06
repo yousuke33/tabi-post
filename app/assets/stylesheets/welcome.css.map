@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,aAAc;EACV,UAAU,EAAE,gBAAgB",
+"sources": ["welcome.scss"],
+"names": [],
+"file": "welcome.css"
+}
