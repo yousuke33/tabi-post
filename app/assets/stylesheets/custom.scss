@@ -91,6 +91,13 @@ header div.container{
 
 /*body*/
 
+p#image {
+  background-image: url(post.jpeg) no-repeat;
+  color: #000000;
+  border:2px solid red;
+  height: 50px;
+}
+
 .btn {
   color: red;
   border: 1.5px solid red;
@@ -102,6 +109,7 @@ header div.container{
   height: 500px;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 .lightpink-bg{
