@@ -5,7 +5,7 @@
 
 body {
   padding-top: 60px;
-  font-family: Kokoro;
+  font-family: 'Droid Serif', serif;
 }
 
 section {
@@ -91,13 +91,6 @@ header div.container{
 
 /*body*/
 
-p#image {
-  background-image: url(post.jpeg) no-repeat;
-  color: #000000;
-  border:2px solid red;
-  height: 50px;
-}
-
 .btn {
   color: red;
   border: 1.5px solid red;
@@ -136,7 +129,21 @@ p#image {
   border: solid 5px #ccc;
 }
 
-.btn.btn-lg {
+.btn.btn-md {
   margin-top: 10px;
+}
+.btn.btn-md:hover {
+  color:white;
+  background:red;
+}
 
+.plan-border {
+  margin: 10px;
+  border: 5px solid #FF9999;
+  border-radius: 1em;
+  text-align: center;
+}
+
+.left-padding {
+  padding-left: 16%;
 }

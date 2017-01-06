@@ -21,14 +21,14 @@
         <div>
           人数: <input type="integer" name="search[:number]" class=" form-control"  value="<%= params[:search][:number] %>"> 
         </div>
-        <%= submit_tag "検索する" %>
+        <%= submit_tag "検索する", class:'btn btn-md' %>
       <% end %>
     </div>
     <div class="col-md-9">
       <div class="row">
         <% if @plans %>
           <% @plans.each do |plan| %>
-            <div class="col-md-4 border-around">
+            <div class="col-md-4 plan-border">
               <%= render partial: "item", locals:{plan: plan} %>
               <%= link_to 'ユーザ詳細', controller:"users", action:"show", id: plan.user_id%>
             </div>

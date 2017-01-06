@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row left-padding">
   <% user.plan.each do |p| %>
-    <div class="col-md-4">
+    <div class="col-md-3 plan-border">
       <%= render partial: "plans/item", locals:{plan: p} %>
       <% if current_user == user %>
         <% if current_user.role == 'guest' %>

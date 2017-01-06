@@ -36,10 +36,12 @@
 
       <div class="actions">
         <%= f.hidden_field :role, value: params[:role] %> 
-        <%= f.submit "登録", class:'btn btn-lg' %>
+        <%= f.submit "登録", class:'btn btn-md' %>
       </div>
     <% end %>
+    <br>
+    <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>
-<%= render "devise/shared/links" %>
+
