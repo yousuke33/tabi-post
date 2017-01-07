@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
+gem 'rails_12factor', group: :production
 # Use qlite3 as the database for Active Record
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
@@ -30,13 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass'
 gem 'devise'
-gem 'omniauth-facebook'
 gem 'rb-readline'
-gem 'role_model'
-gem 'cancancan'
-gem 'rolify'
-gem 'carrierwave'
-gem 'cloudinary'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
