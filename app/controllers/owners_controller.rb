@@ -14,15 +14,17 @@ class OwnersController < ApplicationController
         redirect_to @user
       else
         render 'new' 
-      end
+    end
   end
 
   def edit
-    @owner = Owner.find(params[:id])
+    @user = User.find(params[:id])
+    @owner = Owner.find_by(user_id: @user.id)
   end
 
   def update
-    @owner = Owner.find(params[:id])
+    @user = User.find(params[:id])
+    @owner = Owner.find_by(user_id: @user.id)
     @owner.update(address_params)
     redirect_to user_path
   end
