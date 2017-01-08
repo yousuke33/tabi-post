@@ -7,8 +7,6 @@ class Plan < ActiveRecord::Base
 	has_one :plan_num_of_customer,  dependent: :destroy
 	has_one :plan_detail, 		  	dependent: :destroy
 	
-	validates :plan_date, presence: true
-	
 	accepts_nested_attributes_for :plan_date
  	accepts_nested_attributes_for :plan_place
  	accepts_nested_attributes_for :plan_budget

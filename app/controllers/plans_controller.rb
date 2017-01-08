@@ -32,10 +32,12 @@ class PlansController < ApplicationController
   end
 
   def create
-    if current_user.plan.create(plan_params) 
+    @plan = current_user.plan.new(plan_params)
+    if @plan.save
       flash[:success] = "投稿が完了しました"
       redirect_to root_path
     else
+      flash.now[:alert] = 'プランの投稿に失敗しました。'
       render 'plans/new'
     end
   end
