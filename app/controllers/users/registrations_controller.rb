@@ -59,11 +59,11 @@ before_action :configure_sign_up_params, only: [:create]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :name])
   end
   def guest_owner_params
     guest_owner_params = params.require(:user).permit(:created_at)
-    guest_owner_params[:name] = params[:name]
+    guest_owner_params[:name] = params[:user][:name]
     return guest_owner_params
   end
 
