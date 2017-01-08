@@ -24,13 +24,13 @@
       <div class="field">
         <%= f.label :パスワード %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> 文字以上)</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class:'form-control'%>
       </div>
 
       <div class="field">
-        <%= f.label :パスワード %><br />
+        <%= f.label :パスワードを再入力 %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "パスワード",  class:'form-control'%>
       </div>
 
