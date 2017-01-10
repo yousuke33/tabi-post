@@ -4,6 +4,7 @@ class PlansController < ApplicationController
       if current_user.role == "owner"
         params[:search] = {} if params[:search].blank?
         @plans = Plan.search(params["search"]) if params["search"].present?
+        
         if @plans
           flash[:success] = "#{@plans.length}件のプランが見つかりました"
         end

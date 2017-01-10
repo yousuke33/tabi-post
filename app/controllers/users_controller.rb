@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find_by(id: params[:id])
+  	binding pry
   	if current_user != @user && @user.role == 'guest'
   	  redirect_to user_path(current_user)
   	end
