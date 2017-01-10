@@ -4,6 +4,7 @@ class PlansController < ApplicationController
       if current_user.role == "owner"
         params[:search] = {} if params[:search].blank?
         @plans = Plan.search(params["search"]) if params["search"].present?
+        
         if @plans
           flash[:success] = "#{@plans.length}件のプランが見つかりました"
         end
@@ -32,10 +33,12 @@ class PlansController < ApplicationController
   end
 
   def create
-    if current_user.plan.create(plan_params) 
+    @plan = current_user.plan.new(plan_params)
+    if @plan.save
       flash[:success] = "投稿が完了しました"
       redirect_to root_path
     else
+      flash.now[:alert] = 'プランの投稿に失敗しました。'
       render 'plans/new'
     end
   end

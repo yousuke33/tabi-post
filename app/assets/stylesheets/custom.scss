@@ -2,7 +2,6 @@
 @import "bootstrap";
 
 /* universal */
-
 body {
   padding-top: 60px;
   font-family: 'Droid Serif', serif;
@@ -64,6 +63,9 @@ p {
 }
 
 /* header */
+header {
+  background: white;
+}
 
 header div.container{
   border-bottom: solid 2px red;

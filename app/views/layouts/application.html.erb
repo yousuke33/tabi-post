@@ -7,9 +7,9 @@
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/earlyaccess/kokoro.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet">
+  <%= analytics_init if Rails.env.production? %>
 </head>
 <body>
-    
     <%= render partial: 'layouts/header' %>
     <div class="container">
       <% if notice %>
@@ -26,10 +26,7 @@
     
     	<%= yield %>
     </div>
-
-    
-
-    <!-- <%= render partial: 'layouts/footer' %> -->
+     <!--<%= render partial: 'layouts/footer' %> -->
 </body>
 
 </html>

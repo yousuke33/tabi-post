@@ -35,6 +35,7 @@ gem 'cancancan'
 gem 'rolify'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'google-analytics-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
