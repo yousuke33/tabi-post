@@ -29,7 +29,7 @@ module Plan::Search
     }
 
     scope :with_num_of_customer, lambda {|number|
-      table = PlanBudget.arel_table
+      table = PlanNumOfCustomer.arel_table
       condition = table[:number].lteq(number)
       where(condition)
     }
@@ -47,7 +47,7 @@ module Plan::Search
       r = r.with_plan_number.with_num_of_customer(search_params[":number"]) if search_params[":number"].present? 
       
       return r if r != self
-      where({})
+      # where({})
     }
   end
 end
