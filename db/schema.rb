@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,16 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161226235323) do
+ActiveRecord::Schema.define(version: 20170127115638) do
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
+  end
 
   create_table "guests", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_guests_on_user_id"
   end
-
-  add_index "guests", ["user_id"], name: "index_guests_on_user_id"
 
   create_table "owners", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,18 +37,16 @@ ActiveRecord::Schema.define(version: 20161226235323) do
     t.string   "address_street",          default: "", null: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.index ["user_id"], name: "index_owners_on_user_id"
   end
-
-  add_index "owners", ["user_id"], name: "index_owners_on_user_id"
 
   create_table "plan_budgets", force: :cascade do |t|
     t.integer  "plan_id"
     t.integer  "budget"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_plan_budgets_on_plan_id"
   end
-
-  add_index "plan_budgets", ["plan_id"], name: "index_plan_budgets_on_plan_id"
 
   create_table "plan_dates", force: :cascade do |t|
     t.integer  "plan_id"
@@ -50,44 +54,39 @@ ActiveRecord::Schema.define(version: 20161226235323) do
     t.string   "finish_dates"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["plan_id"], name: "index_plan_dates_on_plan_id"
   end
-
-  add_index "plan_dates", ["plan_id"], name: "index_plan_dates_on_plan_id"
 
   create_table "plan_details", force: :cascade do |t|
     t.integer  "plan_id"
     t.string   "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_plan_details_on_plan_id"
   end
-
-  add_index "plan_details", ["plan_id"], name: "index_plan_details_on_plan_id"
 
   create_table "plan_num_of_customers", force: :cascade do |t|
     t.integer  "plan_id"
     t.integer  "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_plan_num_of_customers_on_plan_id"
   end
-
-  add_index "plan_num_of_customers", ["plan_id"], name: "index_plan_num_of_customers_on_plan_id"
 
   create_table "plan_places", force: :cascade do |t|
     t.integer  "plan_id"
     t.string   "place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_plan_places_on_plan_id"
   end
-
-  add_index "plan_places", ["plan_id"], name: "index_plan_places_on_plan_id"
 
   create_table "plans", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_plans_on_user_id"
   end
-
-  add_index "plans", ["user_id"], name: "index_plans_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -111,9 +110,8 @@ ActiveRecord::Schema.define(version: 20161226235323) do
     t.datetime "locked_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

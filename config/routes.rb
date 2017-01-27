@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resources :owners, except: [:create] 
   resources :users, only: [:show]
   resources :plans
-
+  resources :chat_rooms, only: [:index, :new, :create, :show]
 end
