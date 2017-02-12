@@ -155,6 +155,7 @@ GEM
     rake (12.0.0)
     rb-readline (0.5.3)
     rdoc (4.3.0)
+    redis (3.3.3)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rest-client (2.0.0)
@@ -228,6 +229,7 @@ DEPENDENCIES
   rails (= 5.0.1)
   rails_12factor
   rb-readline
+  redis
   rolify
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

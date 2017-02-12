@@ -1,0 +1,20 @@
+<h1><%= @room.title %></h1>
+
+<div id="messages" data-room-id="<%= @room.id %>">
+  <%= render @room.messages %>
+</div>
+
+<form>
+  <label>Say something:</label><br>
+  <input type="text" data-behavior="room_speaker">
+  <hidden> fa</hidden>
+</form>
+<!-- 
+<%= form_for @message, url:'#' do |f| %>
+	<div class="form-group">
+		<%= f.label :メッセージ内容 %>
+		<%= f.text_area :content, class:"form-control" %>
+		<small class="text-muted">From 2 to 1000 characters</small>
+	</div>
+	<%= f.submit :送信, class:'btn btn-md' %>
+<% end %> -->

@@ -78,4 +78,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   #google-analytics
   GA.tracker = 'UA-77036537-4'
+  config.action_cable.allowed_request_origins = ['https://tabi-post.herokuapp.com/',
+                                               'https://tabi-post.herokuapp.com/']
+  config.action_cable.url = "wss://sitepoint-actioncable.herokuapp.com/cable"
+
 end

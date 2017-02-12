@@ -1,0 +1,9 @@
+<h1>チャットルームを作る</h1>
+
+<%= form_for @room do |f| %>
+	<div class='form-group'>
+		<%= f.label :テーマ %>
+		<%= f.text_field :title, autofocus:true, class:'form-control' %>
+	</div>
+	<%= f.submit '作成', class: 'btn btn-md' %>
+<% end %>

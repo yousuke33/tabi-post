@@ -9,5 +9,6 @@ class User < ActiveRecord::Base
   has_one :owner,       dependent: :destroy
   has_one :guest,       dependent: :destroy
   has_many :plan,       dependent: :destroy
-  has_many :chat_rooms, dependent: :destroy
+  has_many :rooms,      dependent: :destroy
+  has_many :messages,   dependent: :destroy
 end
