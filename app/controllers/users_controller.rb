@@ -3,16 +3,14 @@ class UsersController < ApplicationController
 	before_action :configure_permitted_parameters, if: :devise_controller?
 
   def show
-    set_user
     if set_user
-  	 @user = User.find_by(id: params[:id])
-  	 if current_user.role == 'guest'
-  	   redirect_to user_path(current_user)
-  	 end
+  	   # redirect_to user_path(current_user) if (current_user.role == 'guest' && @user.role == 'guest')
+       @user 
     else
       flash[:alert] = "ユーザーが見つかりません"
       redirect_to root_path
     end
+    @user
   end
 
   private
